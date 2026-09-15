@@ -38,18 +38,18 @@ public class RemoveAccountCommand implements BlabberCommand {
 
 			sqlQuery = "SELECT blab_name FROM users WHERE username = '" + blabberUsername + "'";
 			Statement sqlStatement = connect.createStatement();
-			logger.info(sqlQuery);
+			logger.info(StringUtils.normalizeSpace(sqlQuery));
 			ResultSet result = sqlStatement.executeQuery(sqlQuery);
 			result.next();
 
 			/* START EXAMPLE VULNERABILITY */
 			String event = "Removed account for blabber " + result.getString(1);
 			sqlQuery = "INSERT INTO users_history (blabber, event) VALUES ('" + blabberUsername + "', '" + event + "')";
-			logger.info(sqlQuery);
+			logger.info(StringEscapeUtils.escapeJava(sqlQuery));
 			sqlStatement.execute(sqlQuery);
 
 			sqlQuery = "DELETE FROM users WHERE username = '" + blabberUsername + "'";
-			logger.info(sqlQuery);
+			logger.info(StringUtils.normalizeSpace(sqlQuery));
 			sqlStatement.execute(sqlQuery);
 			/* END EXAMPLE VULNERABILITY */
 
