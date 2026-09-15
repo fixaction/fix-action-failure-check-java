@@ -52,7 +52,7 @@ public class Utils {
 	}
 
 	public static void setCookie(HttpServletResponse response, String name, String value) {
-		response.addCookie(new Cookie(name, value));
+		response.addCookie(new Cookie(URLEncoder.encode(name, Charset.defaultCharset()), value));
 		upgradeCookieSecurityForHttpsIfRequired(response);
 	}
 
