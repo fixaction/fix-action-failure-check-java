@@ -79,4 +79,3 @@ jobs:
           debug: false
           fixType: batch
           files: all
-          cwe: '89, 117, 611'
