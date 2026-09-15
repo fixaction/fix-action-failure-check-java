@@ -28,7 +28,6 @@ public class IgnoreCommand implements BlabberCommand {
 		String sqlQuery = "DELETE FROM listeners WHERE blabber=? AND listener=?;";
 		logger.info(sqlQuery);
 		PreparedStatement action;
-
 		try {
 			action = connect.prepareStatement(sqlQuery);
 
@@ -39,23 +38,19 @@ public class IgnoreCommand implements BlabberCommand {
 			sqlQuery = "SELECT blab_name FROM users WHERE username = '" + blabberUsername + "'";
 			Statement sqlStatement = connect.createStatement();
 			logger.info(sqlQuery);
-
 			ResultSet result = sqlStatement.executeQuery(sqlQuery);
 			result.next();
 
 			/* START EXAMPLE VULNERABILITY */
-			String event = username + " is now ignoring " + blabberUsername
-					+ " (" + result.getString(1) + ")";
-
-			sqlQuery = "INSERT INTO users_history (blabber, event) VALUES (\""
-					+ username + "\", \"" + event + "\")";
-
-			logger.info(StringEscapeUtils.escapeJava(sqlQuery));
+			String event = username + " is now ignoring " + blabberUsername + " (" + result.getString(1) + ")";
+			sqlQuery = "INSERT INTO users_history (blabber, event) VALUES (\"" + username + "\", \"" + event + "\")";
+			logger.info(sqlQuery);
 			sqlStatement.execute(sqlQuery);
 			/* END EXAMPLE VULNERABILITY */
-
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+
 }
