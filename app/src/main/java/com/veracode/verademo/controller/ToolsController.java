@@ -46,7 +46,7 @@ public class ToolsController {
 		String output = "";
 		Process proc;
 
-		logger.info("Pinging: " + host);
+		logger.info("Pinging: " + StringUtils.normalizeSpace(host));
 
 		try {
 			/* START EXAMPLE VULNERABILITY */
