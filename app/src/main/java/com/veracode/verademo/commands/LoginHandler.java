@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 
 public class LoginHandler extends HttpServlet {
 
@@ -30,10 +31,11 @@ public class LoginHandler extends HttpServlet {
             try (Connection conn = ds.getConnection();
                  Statement stmt = conn.createStatement()) {
 
-                String query =
-                    "SELECT * FROM users WHERE username = '" + login + "'";
 
                 try (ResultSet rs = stmt.executeQuery(query)) {
+PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE username = ?")) {
+    stmt.setString(1, login);
+    try (ResultSet rs = stmt.executeQuery()) {
 
                     if (rs.next()) {
                         resp.getWriter().println("Login successful");
