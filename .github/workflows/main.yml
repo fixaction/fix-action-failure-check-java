@@ -75,7 +75,7 @@ jobs:
           inputFile: results.json
           vid: ${{ secrets.VID }}
           vkey: ${{ secrets.VKEY }}
-          createPR: true
+          prComment: true
           debug: false
           fixType: batch
           files: all
