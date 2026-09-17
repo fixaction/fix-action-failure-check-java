@@ -70,14 +70,14 @@ jobs:
           
       - name: Create fixes from static findings
         id: convert
-        uses: veracode/veracode-fix@v1.0.5
+        uses: veracode/veracode-fix@updated_batch_fix_processing
         with:
           inputFile: results.json
           vid: ${{ secrets.VID }}
           vkey: ${{ secrets.VKEY }}
           prComment: true
-          createPR: true
           debug: false
           fixType: batch
           files: all
           cwe: '117'
+          
