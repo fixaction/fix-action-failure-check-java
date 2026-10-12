@@ -70,13 +70,12 @@ jobs:
           
       - name: Create fixes from static findings
         id: convert
-        uses: veracode/veracode-fix@v1.0.2
+        uses: veracode/veracode-fix@v1.0.6
         with:
           inputFile: results.json
           vid: ${{ secrets.VID }}
           vkey: ${{ secrets.VKEY }}
           createPR: true
-          prComment: true
           debug: false
           fixType: batch
           files: changed
