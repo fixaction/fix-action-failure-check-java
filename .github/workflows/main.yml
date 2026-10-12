@@ -80,4 +80,3 @@ jobs:
           debug: false
           fixType: single
           files: all
-          cwe: '117'
