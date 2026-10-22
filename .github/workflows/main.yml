@@ -83,4 +83,4 @@ jobs:
           DEBUG: true
           fixType: batch
           files: all
-          cwe: '27'
+          cwe: '117'
