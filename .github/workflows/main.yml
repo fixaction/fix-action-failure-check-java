@@ -83,4 +83,4 @@ jobs:
           DEBUG: true
           fixType: single
           files: all
-          cwe: '22'
+          cwe: '117'
