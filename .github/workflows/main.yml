@@ -78,9 +78,8 @@ jobs:
           source_base_path_1: "com/:app/src/main/java/com/"
           source_base_path_2: "WEB-INF:app/src/main/webapp/WEB-INF"
           language: java
-          prComment: true
           createPR: true
           DEBUG: true
           fixType: batch
-          files: all
+          files: changed
           cwe: '117'
