@@ -82,4 +82,4 @@ jobs:
           DEBUG: true
           fixType: batch
           files: all
-          cwe: '117'
+          cwe: '24'
