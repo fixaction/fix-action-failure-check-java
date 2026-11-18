@@ -84,5 +84,3 @@ jobs:
           fixType: batch
           files: all
           cwe: '117'
-
-          
