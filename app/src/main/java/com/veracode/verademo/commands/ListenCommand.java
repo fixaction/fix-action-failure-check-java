@@ -36,14 +36,14 @@ public class ListenCommand implements BlabberCommand {
 
 			sqlQuery = "SELECT blab_name FROM users WHERE username = '" + blabberUsername + "'";
 			Statement sqlStatement = connect.createStatement();
-			logger.info(sqlQuery);
+			logger.info(URLEncoder.encode(sqlQuery.toString()));
 			ResultSet result = sqlStatement.executeQuery(sqlQuery);
 			result.next();
 
 			/* START EXAMPLE VULNERABILITY */
 			String event = username + " started listening to " + blabberUsername + " (" + result.getString(1) + ")";
 			sqlQuery = "INSERT INTO users_history (blabber, event) VALUES (\"" + username + "\", \"" + event + "\")";
-			logger.info(sqlQuery);
+			logger.info(StringEscapeUtils.escapeJava(sqlQuery));
 			sqlStatement.execute(sqlQuery);
 			/* END EXAMPLE VULNERABILITY */
 		} catch (SQLException e) {
